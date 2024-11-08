@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class NPCGuideWithWaypoints : MonoBehaviour
+public class NavAgent_Script : MonoBehaviour
 {
     public List<Transform> waypoints; // List of waypoints to follow
     public Transform player; // Reference to the player
@@ -37,7 +37,15 @@ public class NPCGuideWithWaypoints : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > stopDistance)
         {
+            // Stop the NPC and make it face the player
             agent.isStopped = true;
+
+            // Rotate to face the player smoothly
+            Vector3 directionToPlayer = player.position - transform.position;
+            directionToPlayer.y = 0; // Keep rotation on the horizontal plane
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f); // Adjust rotation speed as desired
+
             return;
         }
         else
@@ -67,16 +75,20 @@ public class NPCGuideWithWaypoints : MonoBehaviour
         if (isFadingOut) yield break;
         isFadingOut = true;
 
-        Color initialColor = npcRenderer.material.color;
+        // Assuming the shader has a property for transparency control, such as "_Color" or "_MainColor"
+        Material npcMaterial = npcRenderer.material;
+        Color initialColor = npcMaterial.color;
+
         for (float t = 0; t < 1f; t += Time.deltaTime * fadeSpeed)
         {
             Color newColor = initialColor;
-            newColor.a = Mathf.Lerp(1f, 0f, t);
-            npcRenderer.material.color = newColor;
+            newColor.a = Mathf.Lerp(1f, 0f, t); // Gradually reduce the alpha value to fade out
+            npcMaterial.color = newColor;
             yield return null;
         }
 
-        npcRenderer.material.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
+        // Set the final transparency to 0 and deactivate the game object
+        npcMaterial.color = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
         gameObject.SetActive(false); // Hide the NPC after fading out
     }
 }
