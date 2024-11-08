@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Animation clock4
+  serializedVersion: 6
+  m_Legacy: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.32857593e-07, y: 8.94028229e-09, z: .0671403781, w: .997743547}
+        inSlope: {x: 2.57500687e-10, y: -3.85422361e-09, z: -.0289446097, w: .00193297851}
+        outSlope: {x: 2.57500687e-10, y: -3.85422361e-09, z: -.0289446097, w: .00193297851}
+        tangentMode: 0
+      - time: .533333361
+        value: {x: 1.32976353e-07, y: -6.95426694e-09, z: -.0522256568, w: .998635352}
+        inSlope: {x: -1.31265554e-09, y: -2.53972896e-08, z: -.190730333, w: -.00985889789}
+        outSlope: {x: -1.31265554e-09, y: -2.53972896e-08, z: -.190730333, w: -.00985889789}
+        tangentMode: 0
+      - time: 1
+        value: {x: 1.33157783e-07, y: 2.65878014e-10, z: .00199670997, w: .999998033}
+        inSlope: {x: -8.12145975e-11, y: 4.06717682e-08, z: .30543977, w: -.000609752256}
+        outSlope: {x: -8.12145975e-11, y: 4.06717682e-08, z: .30543977, w: -.000609752256}
+        tangentMode: 0
+      - time: 1.33333337
+        value: {x: 1.3283092e-07, y: 9.32814093e-09, z: .0700531453, w: .997543275}
+        inSlope: {x: -2.74553963e-10, y: 3.93784028e-09, z: .0295727234, w: -.00206172653}
+        outSlope: {x: -2.74553963e-10, y: 3.93784028e-09, z: .0295727234, w: -.00206172653}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: pendulum clock
+  m_CompressedRotationCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 8.17858696, y: 8.17858696, z: 8.17858791}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.33333337
+        value: {x: 8.17858696, y: 8.17858696, z: 8.17858791}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: pendulum clock
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 30
+  m_WrapMode: 2
+  m_Bounds:
+    m_Center: {x: -.520046353, y: .522089839, z: .547592282}
+    m_Extent: {x: .655784011, y: 1.38372433, z: .0287864208}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []
