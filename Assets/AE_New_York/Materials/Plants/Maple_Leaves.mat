@@ -2,20 +2,26 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Maple_Leaves
-  m_Shader: {fileID: 4800000, guid: b9e2206000f063e4482138f005c8e6e1, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _MIXSMOOTHNESFROMBASE_ON
+  m_Shader: {fileID: 4800000, guid: 0abcbc6c786363149ba5331e1ee1afd3, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  - _MIXSMOOTHNESFROMBASE_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -33,6 +39,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
         m_Texture: {fileID: 2800000, guid: edfd48c766a8d4949b93eb80cb012e50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseColorTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Base_Color:
@@ -67,6 +77,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 1f46969a7ac7b9845aa3054c2f904615, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -75,8 +89,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: 26e819997ca443c449ab615eff7fae83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: da843f59b5bf81b40b4c0fdfbe02ee47, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -103,7 +125,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _AmbientOcclusion: 0.31
     - _Ambient_Occlusion: 0.7
     - _Amplitude: 0.101
@@ -159,22 +183,27 @@ Material:
     - _WindPower: 0.098
     - _WindScale: 0.201
     - _WindSpeed: 0.246
+    - _WindStrength: 0.1
     - _Wind_Size: 0.258
     - _Wind_Speed: 4.39
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _AlbedoColor: {r: 0.9150943, g: 0.9146048, b: 0.6949537, a: 0}
+    - _BaseColor: {r: 0.12611881, g: 1, b: 0.0990566, a: 1}
     - _BaseColour: {r: 0.16620687, g: 0.28899768, b: 0.7830188, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
     - _Color_Tilling: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
     - _CoreColour: {r: 0.8962264, g: 0.78634065, b: 0.36779106, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emissive: {r: 0, g: 0, b: 0, a: 0}
     - _OuterColour: {r: 0.7924528, g: 0.29131955, b: 0.17568526, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SubSurfColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _Tilling: {r: 2.1, g: 6.04, b: 0, a: 0}
     - _Tint: {r: 0.7830189, g: 0.7830189, b: 0.7276166, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

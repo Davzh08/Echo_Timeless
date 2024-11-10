@@ -17,5 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DIgital prototype/Demo_Street.unity
     guid: d64e8a994bb851d419663316396c2ee6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 731971559eb20284491d5071e25efa5a,
+      type: 2}
   m_UseUCBPForAssetBundles: 0
