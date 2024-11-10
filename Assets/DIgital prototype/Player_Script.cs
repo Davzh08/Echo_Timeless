@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public float mouseSensitivity = 2f;
-    public float interactionRange = 3f; // 玩家与门的交互距离
+    public float interactionRange = 3f; // Player interaction range
 
     private float xRotation = 0f;
 
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 控制摄像机视角
+        if (!camera.transform.IsChildOf(head)) return; // Skip camera rotation if detached
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
 
-        // 检测门的交互
-        CheckForDoorInteraction();
+        CheckForInteraction();
     }
 
     void FixedUpdate()
@@ -46,17 +45,27 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = transform.TransformDirection(newVelocity);
     }
 
-    private void CheckForDoorInteraction()
+    private void CheckForInteraction()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2)); // 从屏幕中心发射射线
+        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
-            Door door = hit.collider.GetComponent<Door>();
-            if (door != null && Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                door.ToggleDoor(); // 按下E时调用Door的开关方法
+                Door door = hit.collider.GetComponent<Door>();
+                if (door != null)
+                {
+                    door.ToggleDoor();
+                    return;
+                }
+
+                ClockInteract clock = hit.collider.GetComponent<ClockInteract>();
+                if (clock != null)
+                {
+                    clock.StartClockInteraction(camera); // Send the camera to ClockInteract
+                }
             }
         }
     }
