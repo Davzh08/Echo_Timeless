@@ -25,7 +25,7 @@ public class ClockInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerInRange && Input.GetMouseButtonDown(0))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Clock clicked, loading scene...");  // 调试信息
             LoadScene();
