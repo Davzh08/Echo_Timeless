@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6372832225485629054
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
+--- !u!114 &-3805250242387067462
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_ForFX 1
+  m_Shader: {fileID: -6465566751694194690, guid: 877218cff4e648942a2fc340f3dc5ed2,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Disturbulance_Tex:
+        m_Texture: {fileID: 2800000, guid: 0931f1da6176fb347a42d16829a82a46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask_Tex:
+        m_Texture: {fileID: 2800000, guid: ed0a8b74112ebad41b09c8159cccb62c, type: 3}
+        m_Scale: {x: 1, y: -0.13}
+        m_Offset: {x: 0, y: 1}
+    - _Mask_Tex2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 2fe3a32b7a6253b42a8f333b9e8d9beb, type: 3}
+        m_Scale: {x: 0.5, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _dissoveTex:
+        m_Texture: {fileID: 2800000, guid: 0931f1da6176fb347a42d16829a82a46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _rampColor:
+        m_Texture: {fileID: 2800000, guid: 83fdc444f23b8964eacb24dbbde86f0e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _vertex_displacementTEX:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Alphaclip1: 0
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
+    - _Blend: 2
+    - _CastShadows: 0
+    - _Cull: 0
+    - _D_Curve_on_R: 0
+    - _Disturbulance_U_speed: 0.1
+    - _Disturbulance_V_speed: 0
+    - _Disturbulance_on: 1
+    - _Disturbulance_power: 0.3
+    - _DstBlend: 1
+    - _Mask_Tex2_Rotation_1: 0
+    - _Mask_strength: 1.63
+    - _MovingU_Speed: 0
+    - _MovingV_Speed: -1.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Rotate: 91
+    - _SoftEdgeDistance: 1
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
+    - _alpha: 1
+    - _alphaTex: 0
+    - _curve_on: 0
+    - _dRotation: 0.95
+    - _desoveOn: 1
+    - _displacement_On: 0
+    - _displacement_U_speed: 0
+    - _displacement_V_speed: 0
+    - _displacement_curve_on_G: 0
+    - _dissove_U_speed: 0.5
+    - _dissove_V_speed: -0.5
+    - _dissove_amount: 0
+    - _dissove_contrast: -1.43
+    - _frenel_On: 0
+    - _frenel_oneMinus: 1
+    - _frenel_power: 1
+    - _maskTex: 1
+    - _maskTex_rotation: 0
+    - _opacity_U_speed: 0
+    - _opacity_V_speed: 0
+    - _ramp_qiangdu: 1
+    - _ramp_rotation: 0
+    - _softEdges: 0
+    - _vertexDisplacementPower: 0
+    m_Colors:
+    - _baseColor: {r: 4.237095, g: 4.237095, b: 4.237095, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

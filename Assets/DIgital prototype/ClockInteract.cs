@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+
 
 public class ClockInteract : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ClockInteract : MonoBehaviour
     public Text inputText;                 // Text for displaying time input
     public Text feedbackText;              // Feedback text for correct/incorrect input
     public string correctTime = "2008";    // Correct time input without colon
+    
 
     private Camera playerCamera;           // Player's main camera
     private Transform playerCameraOriginalParent;
@@ -16,6 +18,8 @@ public class ClockInteract : MonoBehaviour
     private Quaternion originalCameraRotation;
     private bool isInteracting = false;
     private string playerInput = "";
+
+    private bool isPlayerInRange = false;
 
     public void StartClockInteraction(Camera camera)
     {
@@ -71,8 +75,12 @@ public class ClockInteract : MonoBehaviour
             {
                 ExitClockInteraction();
             }
+
         }
     }
+
+
+
 
     private void HandleTimeInput()
     {
@@ -101,10 +109,11 @@ public class ClockInteract : MonoBehaviour
 
     private void CheckTimeInput()
     {
+        //if (playerInput == correctTime)
         if (playerInput == correctTime)
         {
             feedbackText.text = "Correct!";
-            feedbackText.color = Color.green;
+            inputText.color = Color.green;
         }
         else
         {
@@ -125,4 +134,6 @@ public class ClockInteract : MonoBehaviour
         playerCamera.transform.position = originalCameraPosition;
         playerCamera.transform.rotation = originalCameraRotation;
     }
+
+   
 }
