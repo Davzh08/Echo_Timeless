@@ -56,27 +56,27 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Disturbulance_Tex:
-        m_Texture: {fileID: 2800000, guid: 0931f1da6176fb347a42d16829a82a46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8762073e1a690204caba51a2b11fa87b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask_Tex:
-        m_Texture: {fileID: 2800000, guid: ed0a8b74112ebad41b09c8159cccb62c, type: 3}
-        m_Scale: {x: 1, y: 0.26}
-        m_Offset: {x: 0, y: -0.04}
+        m_Texture: {fileID: 2800000, guid: 885ac5d960a61334d86d34841ae1cb1e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask_Tex2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: e9d3080cdb4254410a1bf4c0f2e1523f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 34a384458a2991c49b184f3b86663a92, type: 3}
+        m_Scale: {x: 2, y: 1}
+        m_Offset: {x: 0.01, y: 0.23}
     - _dissoveTex:
-        m_Texture: {fileID: 2800000, guid: 0931f1da6176fb347a42d16829a82a46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6537eb4526f1d994eb341ab13cba7ab7, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 1.17, y: 0}
     - _rampColor:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 83fdc444f23b8964eacb24dbbde86f0e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _vertex_displacementTEX:
@@ -107,18 +107,18 @@ Material:
     - _Cull: 0
     - _D_Curve_on_R: 0
     - _Disturbulance_U_speed: 0.1
-    - _Disturbulance_V_speed: 0
-    - _Disturbulance_on: 0
-    - _Disturbulance_power: 0.3
+    - _Disturbulance_V_speed: -0.6
+    - _Disturbulance_on: 1
+    - _Disturbulance_power: 0.4
     - _DstBlend: 1
     - _Mask_Tex2_Rotation_1: 0
-    - _Mask_strength: 1.63
-    - _MovingU_Speed: 0
-    - _MovingV_Speed: 0
+    - _Mask_strength: 0.41
+    - _MovingU_Speed: 0.51
+    - _MovingV_Speed: -0.66
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Rotate: 0
-    - _SoftEdgeDistance: 1
+    - _Rotate: 90
+    - _SoftEdgeDistance: 0.43
     - _SrcBlend: 5
     - _Surface: 1
     - _ZTest: 4
@@ -127,21 +127,21 @@ Material:
     - _alpha: 1
     - _alphaTex: 0
     - _curve_on: 0
-    - _dRotation: 0.95
+    - _dRotation: 0
     - _desoveOn: 0
     - _displacement_On: 0
     - _displacement_U_speed: 0
     - _displacement_V_speed: 0
     - _displacement_curve_on_G: 0
-    - _dissove_U_speed: 0.5
-    - _dissove_V_speed: -0.5
-    - _dissove_amount: 0
-    - _dissove_contrast: -1.43
+    - _dissove_U_speed: 0.82
+    - _dissove_V_speed: 0.69
+    - _dissove_amount: 0.09
+    - _dissove_contrast: 0
     - _frenel_On: 0
     - _frenel_oneMinus: 1
     - _frenel_power: 1
     - _maskTex: 1
-    - _maskTex_rotation: 0
+    - _maskTex_rotation: 90
     - _opacity_U_speed: 0
     - _opacity_V_speed: 0
     - _ramp_qiangdu: 1
@@ -149,6 +149,6 @@ Material:
     - _softEdges: 0
     - _vertexDisplacementPower: 0
     m_Colors:
-    - _baseColor: {r: 4.237095, g: 4.237095, b: 4.237095, a: 0}
+    - _baseColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
