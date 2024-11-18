@@ -62,7 +62,7 @@ Material:
     - _Mask_Tex:
         m_Texture: {fileID: 2800000, guid: 885ac5d960a61334d86d34841ae1cb1e, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: -0.05, y: 0}
     - _Mask_Tex2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -112,7 +112,7 @@ Material:
     - _Disturbulance_power: 0.4
     - _DstBlend: 1
     - _Mask_Tex2_Rotation_1: 0
-    - _Mask_strength: 0.41
+    - _Mask_strength: 0.66
     - _MovingU_Speed: 0.51
     - _MovingV_Speed: -0.66
     - _QueueControl: 0
@@ -128,14 +128,14 @@ Material:
     - _alphaTex: 0
     - _curve_on: 0
     - _dRotation: 0
-    - _desoveOn: 0
+    - _desoveOn: 1
     - _displacement_On: 0
     - _displacement_U_speed: 0
     - _displacement_V_speed: 0
     - _displacement_curve_on_G: 0
     - _dissove_U_speed: 0.82
     - _dissove_V_speed: 0.69
-    - _dissove_amount: 0.09
+    - _dissove_amount: -0.5
     - _dissove_contrast: 0
     - _frenel_On: 0
     - _frenel_oneMinus: 1
