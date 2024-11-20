@@ -2,11 +2,11 @@
 
 public class Door : MonoBehaviour
 {
-    private bool open; // open 控制门的开关状态
-    public float smooth = 2.0f;
-    public float DoorOpenAngle = 90.0f;
-    private Vector3 defaultRot;
-    private Vector3 openRot;
+    private bool open; // Door open/close state
+    public float smooth = 2.0f; // Speed of door rotation
+    public float DoorOpenAngle = 90.0f; // Angle to open the door
+    private Vector3 defaultRot; // Default rotation of the door
+    private Vector3 openRot; // Open rotation of the door
 
     void Start()
     {
@@ -16,6 +16,7 @@ public class Door : MonoBehaviour
 
     void Update()
     {
+        // Smoothly rotate the door to the open or closed state
         if (open)
         {
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
@@ -28,6 +29,7 @@ public class Door : MonoBehaviour
 
     public void ToggleDoor()
     {
-        open = !open; // 切换门的开关状态
+        Debug.Log("Toggling Door: " + gameObject.name); // Debug info
+        open = !open; // Switch the door's state
     }
 }

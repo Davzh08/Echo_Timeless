@@ -2,63 +2,41 @@
 using UnityEngine.UI;
 using System.Collections;
 
-
 public class ClockInteract : MonoBehaviour
 {
-    public Transform clockViewPoint;       // Position to zoom into near the clock
-    public GameObject timeInputUI;         // UI panel for time input
-    public Text inputText;                 // Text for displaying time input
-    public Text feedbackText;              // Feedback text for correct/incorrect input
-    public string correctTime = "2008";    // Correct time input without colon
-    
+    public Transform clockViewPoint; // Position to zoom into near the clock
+    public GameObject timeInputUI;   // UI panel for time input
+    public Text inputText;           // Text for displaying time input
+    public Text feedbackText;        // Feedback text for correct/incorrect input
+    public string correctTime = "2008"; // Correct time input without colon
 
-    private Camera playerCamera;           // Player's main camera
-    private Transform playerCameraOriginalParent;
-    private Vector3 originalCameraPosition;
-    private Quaternion originalCameraRotation;
+    private CameraFollow cameraFollow; // Camera follow script reference
+    private Transform originalTarget;  // Original target for the camera
     private bool isInteracting = false;
     private string playerInput = "";
 
-    private bool isPlayerInRange = false;
-
-    public void StartClockInteraction(Camera camera)
+    public void StartClockInteraction(CameraFollow follow)
     {
-        playerCamera = camera;
-        playerCameraOriginalParent = camera.transform.parent;
+        cameraFollow = follow;
 
-        if (playerCamera == null)
+        if (cameraFollow == null)
         {
-            Debug.LogError("Player camera not found! Ensure a Camera component is attached to the player.");
+            Debug.LogError("CameraFollow script not found!");
             return;
         }
 
-        // Save original position and rotation
-        originalCameraPosition = playerCamera.transform.position;
-        originalCameraRotation = playerCamera.transform.rotation;
+        // Save original camera target
+        originalTarget = cameraFollow.target;
+
+        // Change camera target to the clock
+        cameraFollow.SetTarget(clockViewPoint);
 
         isInteracting = true;
-        StartCoroutine(ZoomInToClock());
-    }
-
-    private IEnumerator ZoomInToClock()
-    {
-        Vector3 initialPosition = playerCamera.transform.position;
-        Quaternion initialRotation = playerCamera.transform.rotation;
-
-        float zoomSpeed = 2f;
-        float progress = 0f;
-
-        while (progress < 1f)
-        {
-            playerCamera.transform.position = Vector3.Lerp(initialPosition, clockViewPoint.position, progress);
-            playerCamera.transform.rotation = Quaternion.Lerp(initialRotation, clockViewPoint.rotation, progress);
-            progress += Time.deltaTime * zoomSpeed;
-            yield return null;
-        }
-
-        playerCamera.transform.SetParent(clockViewPoint); // Lock camera to clock
         timeInputUI.SetActive(true);
         feedbackText.text = ""; // Clear previous feedback
+
+        Debug.Log($"Starting interaction with {gameObject.name}");
+        Debug.Log($"Clock view point: {clockViewPoint.name}");
     }
 
     void Update()
@@ -66,21 +44,18 @@ public class ClockInteract : MonoBehaviour
         if (isInteracting)
         {
             HandleTimeInput();
+
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 CheckTimeInput();
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitClockInteraction();
             }
-
         }
     }
-
-
-
 
     private void HandleTimeInput()
     {
@@ -95,25 +70,21 @@ public class ClockInteract : MonoBehaviour
                 playerInput = playerInput.Substring(0, playerInput.Length - 1); // Delete last character
             }
         }
+
         inputText.text = FormatTimeInput(playerInput);
     }
 
     private string FormatTimeInput(string input)
     {
-        if (input.Length >= 2)
-        {
-            return input.Insert(2, ":");
-        }
-        return input;
+        return input.Length >= 2 ? input.Insert(2, ":") : input;
     }
 
     private void CheckTimeInput()
     {
-        //if (playerInput == correctTime)
         if (playerInput == correctTime)
         {
             feedbackText.text = "Correct!";
-            inputText.color = Color.green;
+            feedbackText.color = Color.green;
         }
         else
         {
@@ -124,16 +95,15 @@ public class ClockInteract : MonoBehaviour
 
     public void ExitClockInteraction()
     {
-        timeInputUI.SetActive(false);
         isInteracting = false;
         playerInput = "";
+        timeInputUI.SetActive(false);
         feedbackText.text = "";
 
-        // Return camera to original position and re-parent it to the player
-        playerCamera.transform.SetParent(playerCameraOriginalParent);
-        playerCamera.transform.position = originalCameraPosition;
-        playerCamera.transform.rotation = originalCameraRotation;
+        // Return camera to original target
+        if (cameraFollow != null && originalTarget != null)
+        {
+            cameraFollow.SetTarget(originalTarget);
+        }
     }
-
-   
 }
