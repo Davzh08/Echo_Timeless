@@ -18,21 +18,20 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        // ×Ô¶¯»ñÈ¡³¡¾°ÖÐµÄ Main Camera
-        CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        // Ensure CameraFollow is correctly initialized
         if (cameraFollow != null)
         {
-            cameraFollow.SetTarget(head); // ½«Ïà»úÄ¿±êÉèÖÃÎª Head
+            cameraFollow.SetTarget(head);
         }
         else
         {
-            Debug.LogError("CameraFollow script is not assigned or Camera.main is missing!");
+            Debug.LogError("CameraFollow script is not assigned in PlayerController!");
         }
     }
 
     void Update()
     {
-        // Control camera rotation
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -41,13 +40,13 @@ public class PlayerController : MonoBehaviour
         head.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
 
-        // Handle interactions
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         CheckForInteraction();
     }
 
     void FixedUpdate()
     {
-        // Move player
+        // ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         Vector3 newVelocity = Vector3.up * rb.linearVelocity.y;
         float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
         newVelocity.x = Input.GetAxis("Horizontal") * speed;
@@ -57,30 +56,39 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForInteraction()
     {
-        if (Camera.main == null)
-        {
-            Debug.LogError("Main Camera is not found in the scene!");
-            return;
-        }
-
+        // ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
-            // ´¦ÀíÃÅ½»»¥
+            // ï¿½ï¿½ï¿½ Door ï¿½Å±ï¿½
             Door door = hit.collider.GetComponent<Door>();
-            if (door != null && Input.GetKeyDown(KeyCode.E))
+            if (door != null)
             {
-                door.ToggleDoor();
-                return;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    door.ToggleDoor(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
+                    return;
+                }
             }
 
-            // ´¦ÀíÖÓ±í½»»¥
+            // ï¿½ï¿½ï¿½ ClockInteract ï¿½Å±ï¿½
             ClockInteract clock = hit.collider.GetComponent<ClockInteract>();
-            if (clock != null && Input.GetKeyDown(KeyCode.E))
+            if (clock != null)
             {
-                clock.StartClockInteraction(Camera.main.GetComponent<CameraFollow>());
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    clock.StartClockInteraction(cameraFollow); // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ó½ï¿½ï¿½ï¿½
+                    return;
+                }
+            }
+
+            // Check if the hit object has a VideoInteract script
+            VideoInteract video = hit.collider.GetComponent<VideoInteract>();
+            if (video != null)
+            {
+                video.PlayVideo();
                 return;
             }
         }
