@@ -19,8 +19,9 @@ public class VideoInteract : MonoBehaviour
             Debug.LogError("MainCamera is not assigned!");
         }
 
-        // Ensure VideoPlayer starts disabled
+        // 确保 VideoPlayer 初始状态为禁用
         videoPlayer.enabled = false;
+        videoPlayer.Stop(); // 停止任何默认播放的内容
     }
 
     public void PlayVideo()
