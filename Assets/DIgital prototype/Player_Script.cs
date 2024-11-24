@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        if (Camera.main == null)
+        {
+            Debug.LogError("No MainCamera found in the scene!");
+        }
+
         // Ensure CameraFollow is correctly initialized
         if (cameraFollow != null)
         {
@@ -56,41 +61,37 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForInteraction()
     {
-        // ����Ļ�����������
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
-            // ��� Door �ű�
+            Debug.Log($"Raycast hit: {hit.collider.name}"); // 输出命中对象名称
+
             Door door = hit.collider.GetComponent<Door>();
-            if (door != null)
+            if (door != null && Input.GetKeyDown(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    door.ToggleDoor(); // �����������߼�
-                    return;
-                }
+                door.ToggleDoor();
+                return;
             }
 
-            // ��� ClockInteract �ű�
             ClockInteract clock = hit.collider.GetComponent<ClockInteract>();
-            if (clock != null)
+            if (clock != null && Input.GetKeyDown(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    clock.StartClockInteraction(cameraFollow); // ����ʱ�ӽ���
-                    return;
-                }
+                clock.StartClockInteraction(cameraFollow);
+                return;
             }
 
-            // Check if the hit object has a VideoInteract script
             VideoInteract video = hit.collider.GetComponent<VideoInteract>();
-            if (video != null)
+            if (video != null && Input.GetKeyDown(KeyCode.E))
             {
                 video.PlayVideo();
                 return;
             }
+        }
+        else
+        {
+            Debug.Log("No object hit within interaction range.");
         }
     }
 }

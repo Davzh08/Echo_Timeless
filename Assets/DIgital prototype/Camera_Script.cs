@@ -15,6 +15,7 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
+        // Calculate the initial offset between the camera and the target
         offset = transform.position - target.position;
     }
 
@@ -22,9 +23,11 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null)
         {
+            // Smoothly follow the target's position
             Vector3 desiredPosition = target.position + offset;
             transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
 
+            // Smoothly rotate to match the target's rotation
             transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, followSpeed * Time.deltaTime);
         }
     }
@@ -40,3 +43,4 @@ public class CameraFollow : MonoBehaviour
         target = newTarget;
     }
 }
+
