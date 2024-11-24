@@ -9,41 +9,31 @@ public class VideoInteract : MonoBehaviour
 
     void Start()
     {
-        if (videoPlayer == null)
+        if (videoPlayer == null || mainCamera == null)
         {
-            Debug.LogError("VideoPlayer is not assigned!");
+            Debug.LogError($"VideoPlayer or MainCamera is not assigned on {gameObject.name}");
+            return;
         }
 
-        if (mainCamera == null)
-        {
-            Debug.LogError("MainCamera is not assigned!");
-        }
-
-        // Ensure VideoPlayer starts disabled
-        videoPlayer.enabled = false;
+        videoPlayer.Stop(); // 确保视频停止播放
     }
 
     public void PlayVideo()
     {
         if (videoPlayer == null || mainCamera == null) return;
 
-        // Enable the VideoPlayer and start playing
-        videoPlayer.enabled = true;
-        videoPlayer.Play();
-
-        // Set the interaction flag
+        videoPlayer.Play(); // 开始播放视频
         isInteracting = true;
 
-        // Optional: Lock player controls while video plays
+        // 可选：禁用玩家控制
         LockPlayerControls();
     }
 
     void Update()
     {
-        // Stop the video if it's finished playing
         if (isInteracting && (!videoPlayer.isPlaying || Input.GetKeyDown(KeyCode.Escape)))
         {
-            StopVideo();
+            StopVideo(); // 当视频播放结束或按下 Escape 时停止播放
         }
     }
 
@@ -51,27 +41,21 @@ public class VideoInteract : MonoBehaviour
     {
         if (videoPlayer == null) return;
 
-        // Stop and disable the VideoPlayer
-        videoPlayer.Stop();
-        videoPlayer.enabled = false;
-
-        // Reset the interaction flag
+        videoPlayer.Stop(); // 停止播放
         isInteracting = false;
 
-        // Unlock player controls
+        // 恢复玩家控制
         UnlockPlayerControls();
     }
 
     private void LockPlayerControls()
     {
-        // Optional: Implement logic to disable player controls while the video plays
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
     private void UnlockPlayerControls()
     {
-        // Optional: Implement logic to re-enable player controls after the video ends
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
