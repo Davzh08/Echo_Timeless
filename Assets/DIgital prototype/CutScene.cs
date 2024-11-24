@@ -4,6 +4,7 @@ using UnityEngine.Video;
 public class VideoInteract : MonoBehaviour
 {
     public VideoPlayer videoPlayer; // Reference to the VideoPlayer component
+
     public Camera mainCamera;       // Main camera for near plane rendering
     private bool isInteracting = false; // Tracks if the player is interacting with the video
 
@@ -13,6 +14,8 @@ public class VideoInteract : MonoBehaviour
         {
             Debug.LogError($"VideoPlayer or MainCamera is not assigned on {gameObject.name}");
             return;
+            videoPlayer.gameObject.SetActive(false); // Ensure video player is hidden initially
+
         }
 
         videoPlayer.Stop(); // 确保视频停止播放
@@ -24,13 +27,29 @@ public class VideoInteract : MonoBehaviour
 
         videoPlayer.Play(); // 开始播放视频
         isInteracting = true;
+        videoPlayer.gameObject.SetActive(true); // Ensure video player is hidden initially
 
         // 可选：禁用玩家控制
         LockPlayerControls();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the object entering the trigger is the player
+        if (other.CompareTag("Player"))
+        {
+            isInteracting = true; // Mark that the player is inside the trigger zone
+       
+        }
+    }
+
     void Update()
     {
+        if (isInteracting && Input.GetKeyDown(KeyCode.E))
+        {
+            PlayVideo(); // Start the video playback
+        }
+
         if (isInteracting && (!videoPlayer.isPlaying || Input.GetKeyDown(KeyCode.Escape)))
         {
             StopVideo(); // 当视频播放结束或按下 Escape 时停止播放
