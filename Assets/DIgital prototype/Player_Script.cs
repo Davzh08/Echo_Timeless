@@ -88,6 +88,13 @@ public class PlayerController : MonoBehaviour
                 video.PlayVideo();
                 return;
             }
+
+            PictureInteract picture = hit.collider.GetComponent<PictureInteract>();
+            if (picture != null && Input.GetKeyDown(KeyCode.E))
+            {
+                picture.StartPictureInteraction(cameraFollow);
+                return;
+            }
         }
         else
         {
