@@ -32,7 +32,8 @@ public class PictureInteract : MonoBehaviour
 
     void Update()
     {
-        if (isInteracting && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)))
+        // Check if Q or Escape is pressed to exit interaction
+        if (isInteracting && (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)))
         {
             ExitPictureInteraction();
         }
