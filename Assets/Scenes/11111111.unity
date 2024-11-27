@@ -770,7 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1465515377}
   head: {fileID: 2084738622}
-  camera: {fileID: 493870250}
+  cameraFollow: {fileID: 0}
   walkSpeed: 3.3
   runSpeed: 5
   mouseSensitivity: 2
@@ -824,7 +824,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709767198}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ab5401fd6a6e2cc4eb9bb2cfb0ddae9e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 0fecfd39826ddf64e8c0cb131a5bb982, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 493870250}
