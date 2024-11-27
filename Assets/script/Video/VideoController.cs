@@ -57,6 +57,12 @@ public class VideoTrigger : MonoBehaviour
         {
             StartVideo(); // Start the video playback
         }
+
+        // Check if the video is playing and the player presses Escape
+        if (videoPlayer != null && videoPlayer.isPlaying && Input.GetKeyDown(KeyCode.Escape))
+        {
+            StopVideo(); // Stop the video playback and reset the UI
+        }
     }
 
     void StartVideo()
@@ -72,17 +78,25 @@ public class VideoTrigger : MonoBehaviour
         }
     }
 
-    void OnVideoEnd(VideoPlayer vp)
+    void StopVideo()
     {
-        // Callback function when the video finishes playing
+        // Stop video playback and hide the video player
         if (videoPlayer != null)
         {
             videoPlayer.Stop(); // Stop the video
             videoPlayer.gameObject.SetActive(false); // Hide the video player
-            if (promptUI != null)
-            {
-                promptUI.SetActive(true); // Show the prompt UI again
-            }
         }
+
+        // Show the prompt UI again
+        if (promptUI != null)
+        {
+            promptUI.SetActive(true);
+        }
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        // Callback function when the video finishes playing
+        StopVideo(); // Stop the video and reset the UI
     }
 }
